@@ -1,0 +1,12 @@
+.footer {
+    grid-area: footer;
+    background-color: black;
+    color: blanchedalmond;
+    height: 115px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.contacts_list {
+    list-style: none;
+    margin-left: 130px;
+}

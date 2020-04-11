@@ -1,0 +1,64 @@
+.header {
+  grid-area: header;
+  background-color: brown;
+}
+.header_content {
+  display: flex;
+  justify-content: space-between;
+  width: 1220px;
+  margin: 0 auto;
+  height: 70px;
+}
+.logo {
+  width: 50px;
+  height: 45px;
+  margin: 11px 0 0 20px;
+}
+
+.search {
+  border-radius: 5px;
+  height: 35px;
+  width: 230px;
+  margin-top: 12px;
+}
+
+.logout {
+  border-radius: 5px;
+  height: 35px;
+  width: 80px;
+  margin: 12px 40px;
+  font-size: 16px;
+}
+
+.logout:hover {
+  color: white;
+  background-color: teal;
+  font-size: 16px;
+}
+
+.header_image {
+  position: relative;
+}
+
+.header_image>img {
+  width: 100vw;
+  height: 550px;
+}
+
+.header_image>button {
+  position: absolute;
+  margin-top: -515px;
+  margin-left: 72.7%;
+  height: 43px;
+  width: 140px;
+  border: 2px solid #E44D3A;
+  background-color: white;
+  color: #E44D3A;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.header_image>button:hover {
+  background-color: #E44D3A;
+  color: white;
+}

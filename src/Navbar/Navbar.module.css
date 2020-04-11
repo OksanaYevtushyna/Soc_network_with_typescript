@@ -1,0 +1,33 @@
+.navbar {
+    grid-area: navbar;
+    margin-left: 320px;
+}
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(216, 191, 216, 0.4);
+    border-radius: 3px;
+    height: 450px;
+    margin-top: 0;
+}
+
+.menu {
+    padding: 7px 5px;
+    font-size: 18px;
+    color: teal;
+    cursor: pointer;
+}
+
+.menu:hover {
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: honeydew;
+    margin: 3px 25px 2px 5px;
+    color: black;
+    width: 200px;
+}
+.menu:first-child {
+    margin-top: 20px;
+    color: gold;
+}

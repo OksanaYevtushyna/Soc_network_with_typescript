@@ -1,0 +1,13 @@
+
+.app_wrapper {
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas: 'header header'
+                       'navbar main'
+                       'footer footer';
+  grid-template-rows: 1fr 2fr 60px;
+  grid-template-columns: 600px 8fr;
+  grid-gap: 8px;
+}
+
+
