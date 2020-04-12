@@ -1,9 +1,9 @@
 import React from 'react';
-import contentStyle from './Content.module.css';
+import contentStyle from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 
 
-const Content = () => {
+const Profile = () => {
     return (
         <div className={contentStyle.main}>
             <div className={contentStyle.profile_info}>
@@ -14,4 +14,4 @@ const Content = () => {
     )
 }
 
-export default Content
+export default Profile;

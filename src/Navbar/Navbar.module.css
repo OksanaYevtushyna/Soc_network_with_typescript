@@ -11,6 +11,15 @@
     height: 450px;
     margin-top: 0;
 }
+.list li a {
+    text-decoration: none;
+    color: saddlebrown;
+}
+
+.list li a.active {
+    color: purple;
+    font-weight: bold;
+}
 
 .menu {
     padding: 7px 5px;

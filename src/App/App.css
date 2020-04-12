@@ -10,4 +10,10 @@
   grid-gap: 8px;
 }
 
+.main {
+  grid-area: main;
+  background-color: turquoise;
+  margin-right: 330px;
+}
+
 
