@@ -1,12 +1,12 @@
 import React from 'react';
-import footerStyle from './Footer.module.css';
+import styles from './Footer.module.css';
 
 
 const Footer = () => {
     return (
-        <div className={footerStyle.footer}>
-            <div className={footerStyle.contacts}>
-                <ul className={footerStyle.contacts_list}>
+        <div className={styles.footer}>
+            <div className={styles.contacts}>
+                <ul className={styles.contacts_list}>
                     <li>Contacts:</li>
                     <li>city: Lviv</li>
                     <li>str: Shevchenka</li>

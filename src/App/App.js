@@ -11,17 +11,25 @@ import Music from '../Main/Music/Music';
 import Notification from '../Main/Notification/Notification';
 import Settings from '../Main/Settings/Settings';
 
-const App = () => {
+const App = (props) => {
+  let ProfileComponent = () => <Profile postsData={props.postsData} />;
+  let DialogsComponent = () => <Dialogs dialogsData={props.dialogsData} messagesData={props.messagesData} />;
+  let NewsComponent = () => <News />;
+  let MusicComponent = () => <Music />;
+  /*let NotificationComponent = () => <Notification />;
+  let SettingsComponent = () => <Settings />;*/
+
+
   return (
     <BrowserRouter>
       <div className='app_wrapper'>
         <Header />
         <div className='main'>
-          <Route path='/profile' component={Profile} />
-          <Route path='/dialogs' component={Dialogs} />
-          <Route path='/news' component={News} />
-          <Route path='/music' component={Music} />
-          <Route path='/notification' component={Notification} />
+          <Route path='/profile' render={ProfileComponent} />
+          <Route path='/dialogs' render={DialogsComponent} />
+          <Route path='/news' render={NewsComponent} />
+          <Route path='/music' render={MusicComponent} />
+          <Route path='/notification' render={() => <Notification />} />
           <Route path='/settings' component={Settings} />
         </div>
         <Navbar />

@@ -1,15 +1,16 @@
 import React from 'react';
-import contentStyle from './Profile.module.css';
+import styles from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
-const Profile = () => {
+const Profile = (props) => {
+
+
     return (
-        <div className={contentStyle.main}>
-            <div className={contentStyle.profile_info}>
-
-            </div>
-            <MyPosts />
+        <div className={styles.main}>
+            <ProfileInfo />
+            <MyPosts postsData={props.postsData} />
         </div>
     )
 }

@@ -1,0 +1,18 @@
+.profile_info {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+    padding-top: 80px;
+}
+
+.profile_info img {
+    width: 200px;
+    height: 140px;
+    margin: 10px 10px 0 10%;
+}
+
+.personal_info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}

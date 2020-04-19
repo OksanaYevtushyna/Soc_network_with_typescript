@@ -1,0 +1,24 @@
+.post {
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: cornsilk;
+    width: 85%;
+    height: auto;
+}
+
+.post:hover {
+    transition: ease-out;
+    box-shadow: 3px 4px 6px black;
+}
+
+.post img {
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 50px;
+}
+
+.post span {
+    margin-top: -20px;
+}
