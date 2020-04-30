@@ -22,3 +22,7 @@
 .post span {
     margin-top: -20px;
 }
+
+.post:last-child {
+    margin-bottom: 40px;
+}

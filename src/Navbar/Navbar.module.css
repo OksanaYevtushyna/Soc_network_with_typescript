@@ -38,5 +38,17 @@
 }
 .menu:first-child {
     margin-top: 20px;
-    color: gold;
+}
+
+
+
+.friends img {
+    width: 60px;
+    border-radius: 30px;
+}
+
+
+
+.blockFriend {
+    display: flex;
 }
