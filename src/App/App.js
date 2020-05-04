@@ -12,8 +12,8 @@ import Notification from '../Main/Notification/Notification';
 import Settings from '../Main/Settings/Settings';
 
 const App = (props) => {
-  let ProfileComponent = () => <Profile state={props.state.profilePage} addPost={props.addPost} enterNewPost={props.enterNewPost} />;
-  let DialogsComponent = () => <Dialogs state={props.state.dialogsPage} sentMessage={props.sentMessage} createMessage={props.createMessage} />;
+  let ProfileComponent = () => <Profile state={props.state.profilePage} dispatch={props.dispatch} /*addPost={props.addPost} enterNewPost={props.enterNewPost}*/ />;
+  let DialogsComponent = () => <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch} /*sentMessage={props.sentMessage} createMessage={props.createMessage}*/ />;
   let NewsComponent = () => <News />;
   let MusicComponent = () => <Music />;
   /*let NotificationComponent = () => <Notification />;

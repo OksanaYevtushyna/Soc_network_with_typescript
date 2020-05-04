@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './MyPosts.module.css';
 import Post from './Post/Post';
+import { enterNewPostActionCreator, addPostActionCreator } from '../../../state/state';
 
 
 const MyPosts = (props) => {
@@ -9,25 +10,22 @@ const MyPosts = (props) => {
     let postNewMessage = React.createRef();
 
     let addPost = () => {
-        let post = postNewMessage.current.value;
-        props.addPost(post);
+        props.dispatch(addPostActionCreator())
     }
 
-    let enterNewPost = (updatePost) => {
+    let enterNewPost = () => {
         let post = postNewMessage.current.value;
-        updatePost = post;
-        props.enterNewPost(updatePost);
+        props.dispatch(enterNewPostActionCreator(post))
     }
-
 
     return (
         <div className={styles.postsBlock}>
-            <h3>My Posts</h3>
             <div className={styles.addPost}>
                 <div><textarea cols="40" rows="5" ref={postNewMessage} value={props.newPostData} onChange={enterNewPost}></textarea></div>
                 <div><button onClick={addPost}>Add Post</button></div>
             </div>
             <div className={styles.myPost}>
+                <h3>My Posts</h3>
                 {postsElement}
             </div>
         </div>
