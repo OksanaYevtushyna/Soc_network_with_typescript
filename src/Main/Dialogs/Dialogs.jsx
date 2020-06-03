@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
-import { sentMessageActionCreator, createMessageActionCreator } from '../../state/state';
 
 const Person = (props) => {
     let path = '/dialogs/';
@@ -25,12 +24,12 @@ const Dialogs = (props) => {
     let messageElement = props.state.messagesData.map(message => <Dialog dialog={message.message} key={message.id} src={message.src} />);
 
     let sentMessage = () => {
-        props.dispatch(sentMessageActionCreator());
+        props.sentMessage();
     }
 
     let createMessage = (e) => {
         let message = e.target.value;
-        props.dispatch(createMessageActionCreator(message));
+        props.createMessage(message);
     }
 
     return (
@@ -46,7 +45,6 @@ const Dialogs = (props) => {
                 <div className={styles.dialogItems}>
                     {messageElement}
                 </div>
-
             </div>
         </div>
     )

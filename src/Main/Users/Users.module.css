@@ -1,0 +1,42 @@
+.show {
+    margin-left: 35%;
+    height: 50px;
+    width: 140px;
+    border: 1px solid red;
+    border-radius: 4px;
+    font-weight: bold;
+    text-shadow: 0 0.5 0.5 black;
+}
+
+.userInfo {
+    display: flex;
+}
+
+.userInfo img{
+    width: 60px;
+    height: 70px;
+    border-radius: 18px;
+    margin: 15px 0 0 20px;
+}
+.userInfo span, .userInfo p {
+    margin-left: 15px;
+}
+.photo{
+    display: flex;
+    flex-direction: column;
+}
+.photo button {
+    width: 70px;
+    height: 30px;
+    margin-left: 15px;
+}
+
+.selectedPage {
+    font-weight: bold;
+    margin: 0 2px;
+    cursor: pointer;
+}
+.pageNumber {
+    margin: 0 2px;
+    cursor: pointer;
+}

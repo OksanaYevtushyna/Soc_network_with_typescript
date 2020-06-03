@@ -12,30 +12,15 @@ const FriendsBlock = (props) => {
     )
 }
 
-let listData = [
-    { id: 1, linkName: 'Home', linkPath: '/profile' },
-    { id: 1, linkName: 'Messages', linkPath: '/dialogs' },
-    { id: 1, linkName: 'News', linkPath: '/news' },
-    { id: 1, linkName: 'Music', linkPath: '/music' },
-    { id: 1, linkName: 'Notification', linkPath: '/notification' },
-    { id: 1, linkName: 'Settings', linkPath: '/settings' }
-]
-
-let navList = listData.map((listItem) => <li className={styles.menu}><NavLink to={listItem.linkPath} activeClassName={styles.active}>{listItem.linkName}</NavLink></li>);
 
 const Navbar = (props) => {
     let friendElement = props.state.friendsData.map(friend => <FriendsBlock src={friend.src} name={friend.name} key={friend.id} />);
+    let navList = props.state.navbarListData.map(listItem => <li className={styles.menu} key={listItem.id}><NavLink to={listItem.linkPath} activeClassName={styles.active}>{listItem.linkName}</NavLink></li>);
 
     return (
         <div className={styles.navbar}>
             <ul className={styles.list}>
                 {navList}
-                {/*{<li className={styles.menu}><NavLink to='/profile' activeClassName={styles.active}>Home</NavLink></li>
-                <li className={styles.menu}><NavLink to='/dialogs' activeClassName={styles.active}>Messages</NavLink></li>
-                <li className={styles.menu}><NavLink to='/news' activeClassName={styles.active}>News</NavLink></li>
-                <li className={styles.menu}><NavLink to='/music' activeClassName={styles.active}>Music</NavLink></li>
-                <li className={styles.menu}><NavLink to='/notification' activeClassName={styles.active}>Notification</NavLink></li>
-                <li className={styles.menu}><NavLink to='/settings' activeClassName={styles.active}>Settings</NavLink></li>*/}
             </ul>
             <div>
                 <h3>Friends</h3>
