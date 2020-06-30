@@ -4,8 +4,6 @@ import Preloader from '../../common/preloader/Preloader';
 import { NavLink } from 'react-router-dom';
 
 class UserInfo extends React.Component {
-    followStatus = () => this.props.followStatus(this.props.id);
-    unfollowStatus = () => this.props.unfollowStatus(this.props.id);
     render() {
         return (
             <div className={styles.userInfo}>
@@ -13,27 +11,34 @@ class UserInfo extends React.Component {
                     <NavLink to={'/profile/' + this.props.id}>
                         <img src={this.props.img ? this.props.img : 'https://avatars.mds.yandex.net/get-pdb/1543345/ab20d2c7-57a4-485d-9521-ef418c0aa110/s600'} alt="user_image" />
                     </NavLink>
-                    <button className={styles.follow} onClick={this.props.followed ? this.unfollowStatus : this.followStatus}>{this.props.followed ? 'Unfollow' : 'Follow'}</button>
+                    {this.props.followed ?
+                        <button className={styles.follow} disabled={this.props.followingInProgress.some(id => id === this.props.id)} onClick={() => {
+                            this.props.unfollowThunk(this.props.id)
+                        }}>Unfollow</button> :
+
+                        <button className={styles.follow} disabled={this.props.followingInProgress.some(id => id === this.props.id)} onClick={() => {
+                            this.props.followThunk(this.props.id)
+                        }}>Follow</button>}
                 </div>
                 <div className={styles.info}>
                     <span>{this.props.name}</span><span>{this.props.city}</span>
                     <p>{this.props.status}</p>
                 </div>
-            </div>
+            </div >
         )
     }
 }
 
 class User extends React.Component {
     render() {
-        let usersElement = this.props.state.map(user => <UserInfo key={user.id} name={user.name} img={user.photos.small} city={user.city} status={user.status}
-            followed={user.followed} id={user.id} followStatus={this.props.followStatus} unfollowStatus={this.props.unfollowStatus} />);
+        let usersElement = this.props.state.map(user => <UserInfo key={user.id} name={user.name} img={user.photos.small} city={user.city} status={user.status} id={user.id}
+            followed={user.followed} {...this.props} />);
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         let pages = [];
         for (let i = 1; i <= pagesCount; i++) {
             pages.push(i);
         }
-        let showPages = pages.map(page => <span onClick={() => { this.props.onPageChange(page) }} className={this.props.currentPage === page ? styles.selectedPage : styles.pageNumber} >{page}</span>)
+        let showPages = pages.map((page, index) => <span onClick={() => { this.props.onPageChange(page) }} key={index} className={this.props.currentPage === page ? styles.selectedPage : styles.pageNumber} >{page}</span>)
         return (
             <div className={styles.users}>
                 <h3>Users</h3>
@@ -48,14 +53,7 @@ class Users extends React.Component {
     render() {
         return (
             <div className={styles.users}>
-                {this.props.isLoading ? <Preloader /> : <User state={this.props.state}
-                    pageSize={this.props.pageSize}
-                    totalUsersCount={this.props.totalUsersCount}
-                    currentPage={this.props.currentPage}
-                    followStatus={this.props.followStatus}
-                    unfollowStatus={this.props.unfollowStatus}
-                    onPageChange={this.props.onPageChange}
-                    showMore={this.props.showMore} />}
+                {this.props.isLoading ? <Preloader /> : <User {...this.props} />}
             </div>)
     }
 }

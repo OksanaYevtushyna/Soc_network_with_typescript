@@ -14,8 +14,8 @@ const FriendsBlock = (props) => {
 
 
 const Navbar = (props) => {
-    let friendElement = props.state.friendsData.map(friend => <FriendsBlock src={friend.src} name={friend.name} key={friend.id} />);
-    let navList = props.state.navbarListData.map(listItem => <li className={styles.menu} key={listItem.id}><NavLink to={listItem.linkPath} activeClassName={styles.active}>{listItem.linkName}</NavLink></li>);
+    let friendElement = props.friendsData.map(friend => <FriendsBlock src={friend.src} name={friend.name} key={friend.id} />);
+    let navList = props.navbarListData.map(listItem => <li className={styles.menu} key={listItem.id}><NavLink to={listItem.linkPath} activeClassName={styles.active}>{listItem.linkName}</NavLink></li>);
 
     return (
         <div className={styles.navbar}>

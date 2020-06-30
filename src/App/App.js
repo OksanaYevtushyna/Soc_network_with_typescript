@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { Route } from 'react-router-dom';
 import News from '../Main/News/News';
@@ -11,6 +10,8 @@ import DialogsContainer from '../Main/Dialogs/DialogsContainer';
 import NavbarContainer from '../Navbar/NavbarContainer';
 import UsersContainer from '../Main/Users/UsersContainer';
 import ProfileContainer from '../Main/Profile/ProfileContainer';
+import HeaderContainer from '../Header/HeaderContainer';
+import Login from '../Login/Login';
 
 const App = (props) => {
   let ProfileComponent = () => <ProfileContainer /*store={props.store}*/ />;
@@ -18,20 +19,22 @@ const App = (props) => {
   let NewsComponent = () => <News />;
   let MusicComponent = () => <Music />;
   let UsersComponent = () => <UsersContainer />
+  let LoginComponent = () => <Login />
   /*let NotificationComponent = () => <Notification />;
   let SettingsComponent = () => <Settings />;*/
 
   return (
     <div className='app_wrapper'>
-      <Header />
+      <HeaderContainer />
       <div className='main'>
-        <Route path='/profile' render={ProfileComponent} />
+        <Route path='/profile/:userId?' render={ProfileComponent} />
         <Route path='/dialogs' render={DialogsComponent} />
         <Route path='/users' render={UsersComponent} />
         <Route path='/news' render={NewsComponent} />
         <Route path='/music' render={MusicComponent} />
         <Route path='/notification' render={() => <Notification />} />
         <Route path='/settings' component={Settings} />
+        <Route path='/login' component={LoginComponent} />
       </div>
       <NavbarContainer store={props.store} />
       <Footer />

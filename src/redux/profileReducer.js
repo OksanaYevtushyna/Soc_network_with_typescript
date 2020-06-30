@@ -1,7 +1,9 @@
+import { getApiData } from '../api/api';
+
+
 const ADD_POST = 'ADD-POST';
 const ENTER_NEW_POST = 'ENTER-NEW-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
-
 
 let initialState = {
     postsData: [
@@ -54,6 +56,14 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const enterNewPostActionCreator = (post) => ({ type: ENTER_NEW_POST, updatePost: post });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile: profile });
+
+export const getUserIdThunk = (userId) => {
+    return (dispatch) => {
+        getApiData.getUserId(userId).then(respons => {
+            dispatch(setUserProfile(respons.data));
+        })
+    }
+}
 
 
 export default profileReducer;
