@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from './Dialogs.module.css';
 import { NavLink } from 'react-router-dom';
+import { reduxForm, Field } from 'redux-form';
+import { InputElement } from '../../common/FormsControls/Forms';
+import { requiredField, maxLengthCreator } from '../../validators/formValidators/fromValidators';
 
+
+let maxLength50 = maxLengthCreator(50)
 const Person = (props) => {
     let path = '/dialogs/';
     return (
@@ -19,24 +24,28 @@ const Dialog = (props) => {
     )
 };
 
+const Message = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div><Field name={'dialog'} placeholder='Enter your message here' component={InputElement} validate={[requiredField, maxLength50]} label='textarea'></Field></div>
+            <div><button>Sent message</button></div>
+        </form>
+    )
+}
+
+const ReduxNewPostForm = reduxForm({ form: 'newPost' })(Message)
+
 const Dialogs = (props) => {
     let dialogElement = props.state.dialogsData.map(dialog => <Person name={dialog.name} key={dialog.id} id={dialog.id} />);
     let messageElement = props.state.messagesData.map(message => <Dialog dialog={message.message} key={message.id} src={message.src} />);
 
-    let sentMessage = () => {
-        props.sentMessage();
+    let onSubmit = (dialogData) => {
+        props.sentMessage(dialogData.dialog)
     }
-
-    let createMessage = (e) => {
-        let message = e.target.value;
-        props.createMessage(message);
-    }
-
     return (
         <div>
             <div className={styles.sentMessage}>
-                <div><textarea placeholder='Enter your message here' cols="70" rows="5" onChange={createMessage} value={props.state.initialMessage}></textarea></div>
-                <div><button onClick={sentMessage}>Sent message</button></div>
+                <ReduxNewPostForm onSubmit={onSubmit} />
             </div>
             <div className={styles.dialogs}>
                 <div className={styles.persons}>

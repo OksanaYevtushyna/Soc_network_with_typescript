@@ -31,12 +31,3 @@
     margin-left: 15px;
 }
 
-.selectedPage {
-    font-weight: bold;
-    margin: 0 2px;
-    cursor: pointer;
-}
-.pageNumber {
-    margin: 0 2px;
-    cursor: pointer;
-}

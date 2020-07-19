@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Users.module.css';
 import Preloader from '../../common/preloader/Preloader';
 import { NavLink } from 'react-router-dom';
+import Paginator from '../../common/Paginator/Paginator';
 
 class UserInfo extends React.Component {
     render() {
@@ -9,7 +10,7 @@ class UserInfo extends React.Component {
             <div className={styles.userInfo}>
                 <div className={styles.photo}>
                     <NavLink to={'/profile/' + this.props.id}>
-                        <img src={this.props.img ? this.props.img : 'https://avatars.mds.yandex.net/get-pdb/1543345/ab20d2c7-57a4-485d-9521-ef418c0aa110/s600'} alt="user_image" />
+                        <img src={this.props.img ? this.props.img : 'https://i1.sndcdn.com/avatars-000270080057-j5h0mz-t500x500.jpg'} alt="user_image" />
                     </NavLink>
                     {this.props.followed ?
                         <button className={styles.follow} disabled={this.props.followingInProgress.some(id => id === this.props.id)} onClick={() => {
@@ -33,16 +34,11 @@ class User extends React.Component {
     render() {
         let usersElement = this.props.state.map(user => <UserInfo key={user.id} name={user.name} img={user.photos.small} city={user.city} status={user.status} id={user.id}
             followed={user.followed} {...this.props} />);
-        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
-        let pages = [];
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i);
-        }
-        let showPages = pages.map((page, index) => <span onClick={() => { this.props.onPageChange(page) }} key={index} className={this.props.currentPage === page ? styles.selectedPage : styles.pageNumber} >{page}</span>)
+
         return (
             <div className={styles.users}>
                 <h3>Users</h3>
-                {showPages}
+                <Paginator totalItemsCount={this.props.totalUsersCount} pageSize={this.props.pageSize} onPageChange={this.props.onPageChange} currentPage={this.props.currentPage} />
                 {usersElement}
                 <button onClick={this.props.showMore} className={styles.show}>Show More</button>
             </div>)

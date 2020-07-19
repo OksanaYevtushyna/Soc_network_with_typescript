@@ -6,13 +6,27 @@
 }
 
 .profile_info img {
-    width: 200px;
-    height: 140px;
+    width: 190px;
+    height: 190px;
     margin: 10px 10px 0 10%;
 }
 
 .personal_info {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
+    margin-left: 40px;
+}
+
+.contacts {
+    display: block;
+}
+
+.contactInfo {
+    padding-left: 15px;
+}
+
+.formSummaryError {
+    border: 2px solid red;
+    padding: 5px;
+    color: red;
 }

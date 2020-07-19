@@ -1,9 +1,17 @@
 import React from 'react';
 import Users from './Users';
 import { connect } from 'react-redux';
-import { showMore, setCurrentPage, getUsersThunk, changePageThunk, unfollowThunk, followThunk } from '../../redux/usersReducer';
+import { showMore, getUsersThunk, changePageThunk, unfollowThunk, followThunk } from '../../redux/usersReducer';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import {
+    getUsersData,
+    getPageSize,
+    getTotalUsersCount,
+    getCurrentPage,
+    isLoading,
+    getFollowingInProgress
+} from '../../redux/selectors';
 
 
 class UserAPIContainer extends React.Component {
@@ -22,24 +30,19 @@ class UserAPIContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        state: state.usersReducer.usersData,
-        pageSize: state.usersReducer.pageSize,
-        totalUsersCount: state.usersReducer.totalUsersCount,
-        currentPage: state.usersReducer.currentPage,
-        isLoading: state.usersReducer.isLoading,
-        followingInProgress: state.usersReducer.followingInProgress,
+        state: getUsersData(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isLoading: isLoading(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 }
 
 let UsersContainer = compose(
-    connect(mapStateToProps, { showMore, setCurrentPage, getUsersThunk, changePageThunk, unfollowThunk, followThunk }),
+    connect(mapStateToProps, { showMore, getUsersThunk, changePageThunk, unfollowThunk, followThunk }),
     withAuthRedirect
 )(UserAPIContainer)
-
-
-//let AuthRedirectComponent = withAuthRedirect(UserAPIContainer)
-
-//const UsersContainer = connect(mapStateToProps, { showMore, setCurrentPage, getUsersThunk, changePageThunk, unfollowThunk, followThunk })(AuthRedirectComponent);
 
 
 export default UsersContainer;
@@ -61,6 +64,16 @@ export default UsersContainer;
 };
 const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UserAPIContainer);
 
+let mapStateToProps = (state) => {
+    return {
+        state: state.usersReducer.usersData,
+        pageSize: state.usersReducer.pageSize,
+        totalUsersCount: state.usersReducer.totalUsersCount,
+        currentPage: state.usersReducer.currentPage,
+        isLoading: state.usersReducer.isLoading,
+        followingInProgress: state.usersReducer.followingInProgress,
+    }
+}
 
 render() {
         return <Users state={this.props.state}
@@ -74,3 +87,7 @@ render() {
             unfollowThunk={this.props.unfollowThunk}
             followThunk={this.props.followThunk} />
         }*/
+
+//let AuthRedirectComponent = withAuthRedirect(UserAPIContainer)
+
+//const UsersContainer = connect(mapStateToProps, { showMore, setCurrentPage, getUsersThunk, changePageThunk, unfollowThunk, followThunk })(AuthRedirectComponent);

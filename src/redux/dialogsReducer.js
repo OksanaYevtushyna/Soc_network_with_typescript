@@ -1,5 +1,4 @@
 const SENT_MESSAGE = 'SENT-MESSAGE';
-const CREATE_MESSAGE = 'CREATE-MESSAGE';
 
 
 let initialState = {
@@ -16,27 +15,19 @@ let initialState = {
         { id: 3, message: 'What`s new?', src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRe-MlkycDj-VEMD1uP6J0CzyZ8ZB25DrKXIal3iPXFfgERSmWY&usqp=CAU' },
         { id: 4, message: 'Life is great!', src: 'https://avatarko.ru/img/kartinka/15/zhivotnye_sobaka_14667.jpg' },
         { id: 5, message: 'I am happy!', src: 'https://illustrators.ru/uploads/illustration/image/1295608/main_%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D0%BA%D0%B0_2.jpg' }
-    ],
-    initialMessage: ''
+    ]
 };
 
 const dialogReducer = (state = initialState, action) => {
-    let stateCopy;
     switch (action.type) {
         case SENT_MESSAGE:
+            let message = action.createdMessage
             let newMessage = {
-                id: 6, message: state.initialMessage, src: 'https://cs8.pikabu.ru/post_img/big/2016/01/31/7/1454239523124489716.png'
+                id: 6, message: message, src: 'https://cs8.pikabu.ru/post_img/big/2016/01/31/7/1454239523124489716.png'
             }
-            stateCopy = {
-                ...state,
-                messagesData: [newMessage, ...state.messagesData],
-                initialMessage: ''
-            }
-            return stateCopy;
-        case CREATE_MESSAGE:
             return {
                 ...state,
-                initialMessage: action.createMessage
+                messagesData: [newMessage, ...state.messagesData]
             }
         default:
             return state;
@@ -56,8 +47,7 @@ const dialogReducer = (state = initialState, action) => {
 }
 
 
-export const sentMessage = () => ({ type: SENT_MESSAGE });
-export const createMessage = (createdMessage) => ({ type: CREATE_MESSAGE, createMessage: createdMessage });
+export const sentMessage = (createdMessage) => ({ type: SENT_MESSAGE, createdMessage });
 
 
 export default dialogReducer;
