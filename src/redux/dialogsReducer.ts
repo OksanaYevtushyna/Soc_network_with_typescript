@@ -1,7 +1,11 @@
 const SENT_MESSAGE = 'SENT-MESSAGE';
 
+type InitialStateType = {
+    dialogsData: { id: number, name: string }[]
+    messagesData: { id: number, message: string, src: string | null }[]
+}
 
-let initialState = {
+let initialState: InitialStateType = {
     dialogsData: [
         { id: 1, name: 'Dima' },
         { id: 2, name: 'Oksana' },
@@ -18,7 +22,7 @@ let initialState = {
     ]
 };
 
-const dialogReducer = (state = initialState, action) => {
+const dialogReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case SENT_MESSAGE:
             let message = action.createdMessage
@@ -46,8 +50,12 @@ const dialogReducer = (state = initialState, action) => {
     return state;*/
 }
 
+type SentMessageActionType = {
+    type: typeof SENT_MESSAGE
+    createdMessage: string
+}
 
-export const sentMessage = (createdMessage) => ({ type: SENT_MESSAGE, createdMessage });
+export const sentMessage = (createdMessage: string): SentMessageActionType => ({ type: SENT_MESSAGE, createdMessage });
 
 
 export default dialogReducer;

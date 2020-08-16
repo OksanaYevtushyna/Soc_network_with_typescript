@@ -3,12 +3,15 @@ import { authUserThunk } from './auth-reducer';
 
 const SET_INITIALIZED = 'SET_INITIALIZED';
 
+export type InitialStateType = {
+    initialized: boolean
+}
 
-let initialState = {
+let initialState: InitialStateType = {
     initialized: false
 };
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case SET_INITIALIZED:
             return {
@@ -20,12 +23,13 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
+type InitializedDataActionType = {
+    type: typeof SET_INITIALIZED
+}
 
-export const setInitializedData = () => ({ type: SET_INITIALIZED });
+export const setInitializedData = (): InitializedDataActionType => ({ type: SET_INITIALIZED });
 
-
-
-export const initializeThunk = () => async (dispatch) => {
+export const initializeThunk = () => async (dispatch: any) => {
     await dispatch(authUserThunk())
     dispatch(setInitializedData());
 }

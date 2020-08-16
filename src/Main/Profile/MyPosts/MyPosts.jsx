@@ -9,7 +9,7 @@ let maxLength30 = maxLengthCreator(30)
 const AddPost = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <div><Field validate={[requiredField, maxLength30]} component={InputElement} name={'post'} label='textarea'></Field></div>
+            <div><Field validate={[requiredField, maxLength30]} component={InputElement} name={'post'} label='textarea' /></div>
             <div><button type='submit'>Add Post</button></div>
         </form>
     )

@@ -9,7 +9,6 @@ const ProfileInfo = (props) => {
     let [editMode, setEditMode] = useState(false);
 
     let onSubmit = (contactData) => {
-        console.log(contactData)
         props.updateContactDataThunk(contactData).then(() => {
             setEditMode(false);
         }).catch(err => console.log(err));
@@ -64,3 +63,14 @@ const ContactsData = ({ data, isOwner, toEditMode }) => {
 
 
 export default ProfileInfo;
+
+
+
+/* changeInputHandler = (event) => {
+    this.setState(prev => ({
+        ...prev, ...{
+            [event.target.name]: event.target.value
+        }
+    }))
+}
+*/

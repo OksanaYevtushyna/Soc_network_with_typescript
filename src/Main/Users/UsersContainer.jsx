@@ -2,7 +2,7 @@ import React from 'react';
 import Users from './Users';
 import { connect } from 'react-redux';
 import { showMore, getUsersThunk, changePageThunk, unfollowThunk, followThunk } from '../../redux/usersReducer';
-import withAuthRedirect from '../../hoc/withAuthRedirect';
+//import withAuthRedirect from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import {
     getUsersData,
@@ -41,7 +41,7 @@ let mapStateToProps = (state) => {
 
 let UsersContainer = compose(
     connect(mapStateToProps, { showMore, getUsersThunk, changePageThunk, unfollowThunk, followThunk }),
-    withAuthRedirect
+    //withAuthRedirect
 )(UserAPIContainer)
 
 

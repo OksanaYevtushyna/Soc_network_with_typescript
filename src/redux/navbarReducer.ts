@@ -1,4 +1,10 @@
-let initialState = {
+type NavbarType = {
+    //friendsData: { id: number, src: string, name: string }[]
+    friendsData: Array<{ id: number, src: string, name: string }>
+    navbarListData: { id: number, linkName: string, linkPath: string }[]
+}
+
+let initialState: NavbarType = {
     friendsData: [
         { id: 1, src: 'https://skidka02.ru/wp-content/uploads/instagram-avatarka-razmer_31.jpg', name: 'Oleh' },
         { id: 2, src: 'https://www.meme-arsenal.com/memes/8b0943bab2557a4a088c46e899835946.jpg', name: 'Vitalina' },
@@ -15,7 +21,7 @@ let initialState = {
     ]
 };
 
-export const navbarReducer = (state = initialState, action) => {
+export const navbarReducer = (state = initialState, action: any) => {
 
 
     return state;
